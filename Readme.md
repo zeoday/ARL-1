@@ -45,6 +45,12 @@ exit
 ```
 如遇mongod服务问题导致`timeout of 12000ms exceeded`，请尝试在docker启动中加入路径`-v /sys/fs/cgroup:/sys/fs/cgroup`
 
+**由于docker hub新增流控策略，如遇到国内网络问题导致镜像无法拉取，建议自行搭建官方docker源代理**
+```
+搭建方式参考https://github.com/adysec/mirror
+使用方式参考https://mirror.adysec.com/container/docker-hub/
+```
+
 ### Docker 内源码安装（最新版，需要为境外网络环境，且网络稳定）
 
 ```bass
@@ -74,7 +80,7 @@ chmod +x setup-arl.sh
 本机安装smartdns，以ubuntu为例
 ```
 apt install smartdns -y
-curl https://github.com/adysec/ARL/raw/master/tools/smartdns.conf > /etc/smartdns/smartdns.conf
+curl https://raw.githubusercontent.com/adysec/ARL/refs/heads/master/tools/smartdns.conf > /etc/smartdns/smartdns.conf
 systemctl restart smartdns
 docker exec -it arl bash
 #docker内运行
